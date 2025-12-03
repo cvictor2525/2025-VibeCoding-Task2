@@ -1,37 +1,739 @@
 <!DOCTYPE html>
 <html lang="zh-Hant">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hung | 產品經理Product Manager</title>
+  <meta name="description" content="Hung個人品牌網站,展示前端開發技能、專案作品集,以及提供專業的聯絡方式。歡迎瀏覽我的開發經歷與技術專長。">
+  
   <style>
-    *, *::before, *::after { box-sizing: border-box; }
-    html, body { margin: 0; padding: 0; max-width: 100%; }
-    body { font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Noto Sans TC", Arial, sans-serif; line-height: 1.6; }
-    img { max-width: 100%; height: auto; display: block; }
-    .container { width: 1920px; margin: 0 auto; padding: 16px; }
-    nav a { margin-right: 12px; text-decoration: none; }
-    .grid { display: grid; grid-template-columns: repeat(12, 1fr); gap: 16px; }
-    .col-12 { grid-column: span 12; }
-    @media (min-width: 768px) { .col-md-6 { grid-column: span 6; } }
-    .card { border: 1px solid #e5e7eb; border-radius: 12px; padding: 16px; background: #fff; box-shadow: 0 1px 2px rgba(0,0,0,.04); }
+    /* CSS:BASE-START */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    
+    html {
+      scroll-behavior: smooth;
+    }
+    
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+      line-height: 1.6;
+      color: rgb(0, 0, 0);
+      background-color: rgb(245, 245, 245);
+      margin: 0;
+    }
+    
+    .page {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+      width: 100%;
+    }
+    
+    img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+    }
+    
+    .site-header {
+      background-color: #ffffff;
+      border-bottom: 1px solid #e0e0e0;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+    
+    .nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 20px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    
+    .nav-brand {
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: #007bff;
+      text-decoration: none;
+    }
+    
+    .nav-menu {
+      display: flex;
+      list-style: none;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+    }
+    
+    .nav-link {
+      color: #333333;
+      text-decoration: none;
+      padding: 0.5rem 0;
+      transition: color 0.3s ease;
+      font-size: 0.95rem;
+    }
+    
+    .nav-link:hover {
+      color: #007bff;
+    }
+    
+    main {
+      flex: 1;
+    }
+    
+    .section {
+      padding: 4rem 0;
+      min-height: 50vh;
+    }
+    
+    .section-title {
+      font-size: 2rem;
+      color: #000000;
+      margin-bottom: 1.5rem;
+      position: relative;
+      display: inline-block;
+    }
+    
+    .section-title::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 0;
+      width: 60px;
+      height: 3px;
+      background-color: #007bff;
+    }
+    
+    footer {
+      background-color: #ffffff;
+      color: #555555;
+      text-align: center;
+      padding: 2rem 20px;
+      margin-top: auto;
+      border-top: 1px solid #e0e0e0;
+    }
+    /* CSS:BASE-END */
+    
+    /* CSS:HERO-START */
+    .section-hero {
+      background: linear-gradient(135deg, rgb(245, 245, 245) 0%, #ffffff 100%);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .section-hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-image: url('https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=1600&h=900&fit=crop');
+      background-size: cover;
+      background-position: center;
+      opacity: 0.1;
+      z-index: 0;
+    }
+    
+    .hero-content {
+      position: relative;
+      z-index: 1;
+    }
+    
+    .hero-title {
+      font-size: 2.5rem;
+      color: #007bff;
+      margin-bottom: 1rem;
+      font-weight: 700;
+    }
+    
+    .hero-subtitle {
+      font-size: 1.25rem;
+      color: #333333;
+      margin-bottom: 2rem;
+    }
+    
+    .hero-text {
+      font-size: 1rem;
+      color: #555555;
+      max-width: 600px;
+      margin: 0 auto 2rem;
+      line-height: 1.8;
+    }
+    
+    .hero-cta {
+      display: inline-block;
+      padding: 0.875rem 2rem;
+      background-color: transparent;
+      color: #007bff;
+      border: 2px solid #007bff;
+      text-decoration: none;
+      border-radius: 4px;
+      transition: all 0.3s ease;
+      font-weight: 500;
+    }
+    
+    .hero-cta:hover {
+      background-color: rgba(0, 123, 255, 0.1);
+    }
+    /* CSS:HERO-END */
+    
+    /* CSS:ABOUT-START */
+    .section-about {
+      background-color: rgb(245, 245, 245);
+    }
+    
+    .about-wrapper {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+    }
+    
+    .about-text-content {
+      flex: 1;
+    }
+    
+    .about-text {
+      color: #555555;
+      margin-bottom: 1.5rem;
+      line-height: 1.8;
+      font-size: 1rem;
+    }
+    
+    .about-highlights {
+      list-style: none;
+      padding: 0;
+      margin: 2rem 0;
+    }
+    
+    .about-highlights-item {
+      color: #333333;
+      padding-left: 1.5rem;
+      margin-bottom: 1rem;
+      position: relative;
+      line-height: 1.7;
+    }
+    
+    .about-highlights-item::before {
+      content: '▹';
+      position: absolute;
+      left: 0;
+      color: #007bff;
+      font-size: 1.2rem;
+    }
+    
+    .about-cta-group {
+      display: flex;
+      gap: 1rem;
+      margin-top: 2rem;
+      flex-wrap: wrap;
+    }
+    
+    .about-cta {
+      display: inline-block;
+      padding: 0.875rem 1.75rem;
+      background-color: transparent;
+      color: #007bff;
+      border: 2px solid #007bff;
+      text-decoration: none;
+      border-radius: 4px;
+      transition: all 0.3s ease;
+      font-weight: 500;
+      font-size: 0.95rem;
+    }
+    
+    .about-cta:hover {
+      background-color: rgba(0, 123, 255, 0.1);
+      transform: translateY(-2px);
+    }
+    
+    .about-cta.primary {
+      background-color: #007bff;
+      color: #ffffff;
+    }
+    
+    .about-cta.primary:hover {
+      background-color: #0056b3;
+    }
+    
+    .about-image-wrapper {
+      flex: 1;
+    }
+    
+    .about-image {
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    }
+    /* CSS:ABOUT-END */
+    
+    /* CSS:SKILLS-START */
+    .section-skills {
+      background-color: #ffffff;
+    }
+    
+    .skills-content {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    
+    .skills-text {
+      color: #555555;
+      margin-bottom: 1.5rem;
+      line-height: 1.8;
+    }
+
+    .skills-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 2.5rem;
+      margin-top: 3rem;
+      text-align: center;
+    }
+
+    .skill-item {
+      padding: 2rem;
+      background-color: #ffffff;
+      border-radius: 8px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    }
+
+    .skill-item-icon {
+      height: 64px;
+      margin-bottom: 1rem;
+    }
+
+    .skill-item-title {
+      font-size: 1.25rem;
+      margin-bottom: 0.75rem;
+    }
+    /* CSS:SKILLS-END */
+    
+    /* CSS:PROJECTS-START */
+    .section-projects {
+      background-color: rgb(245, 245, 245);
+    }
+    
+    .projects-content {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    
+    .projects-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 2rem;
+      margin-top: 3rem;
+    }
+
+    .project-card {
+      background-color: #ffffff;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .project-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+    }
+
+    .project-card-image {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+    }
+
+    .project-card-content {
+      padding: 1.5rem;
+      flex-grow: 1;
+    }
+
+    .project-card-title {
+      font-size: 1.25rem;
+      color: #007bff;
+      margin-bottom: 0.75rem;
+    }
+
+    .project-card-description {
+      font-size: 0.95rem;
+      color: #555555;
+      line-height: 1.7;
+    }
+    /* CSS:PROJECTS-END */
+    
+    /* CSS:CONTACT-START */
+    .section-contact {
+      background-color: #ffffff;
+    }
+    
+    .contact-content {
+      max-width: 600px;
+      margin: 0 auto;
+      text-align: center;
+    }
+    
+    .contact-text {
+      color: #555555;
+      margin-bottom: 2rem;
+      line-height: 1.8;
+    }
+    
+    .contact-list {
+      list-style: none;
+      padding: 0;
+    }
+    
+    .contact-item {
+      margin-bottom: 1rem;
+    }
+    
+    .contact-link {
+      color: #007bff;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+    
+    .contact-link:hover {
+      color: #0056b3;
+    }
+
+    .contact-form {
+      margin-top: 3rem;
+      text-align: left;
+    }
+
+    .form-group {
+      margin-bottom: 1.5rem;
+    }
+
+    .form-label {
+      display: block;
+      margin-bottom: 0.5rem;
+      color: #333333;
+      font-weight: 500;
+    }
+
+    .form-input {
+      width: 100%;
+      padding: 0.875rem 1rem;
+      border: 1px solid #ced4da;
+      border-radius: 4px;
+      font-size: 1rem;
+      line-height: 1.5;
+      background-color: #ffffff;
+      transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+    }
+
+    .form-input:focus {
+      border-color: #80bdff;
+      outline: 0;
+      box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+    }
+
+    .contact-submit-btn {
+      display: inline-block;
+      width: 100%;
+      padding: 0.875rem 2rem;
+      background-color: #007bff;
+      color: #ffffff;
+      border: 2px solid #007bff;
+      text-decoration: none;
+      border-radius: 4px;
+      transition: all 0.3s ease;
+      font-weight: 500;
+      font-size: 1rem;
+      cursor: pointer;
+    }
+
+    .contact-submit-btn:hover {
+      background-color: #0056b3;
+      border-color: #0056b3;
+    }
+    /* CSS:CONTACT-END */
+    
+    /* CSS:RWD-START */
+    @media (min-width: 768px) {
+      .nav {
+        padding: 1.25rem 40px;
+      }
+      
+      .nav-menu {
+        gap: 2rem;
+      }
+      
+      .hero-title {
+        font-size: 3.5rem;
+      }
+      
+      .hero-subtitle {
+        font-size: 1.5rem;
+      }
+      
+      .section-title {
+        font-size: 2.5rem;
+      }
+      
+      .section {
+        padding: 5rem 0;
+      }
+      
+      .container {
+        padding: 0 40px;
+      }
+      
+      .about-wrapper {
+        flex-direction: row;
+        gap: 3rem;
+        align-items: center;
+      }
+      
+      .about-text-content {
+        flex: 1.2;
+      }
+      
+      .about-image-wrapper {
+        flex: 1;
+      }
+
+      .skills-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+    
+    @media (min-width: 1024px) {
+      .hero-title {
+        font-size: 4rem;
+      }
+      
+      .section {
+        padding: 6rem 0;
+      }
+      
+      .about-wrapper {
+        gap: 4rem;
+      }
+
+      .projects-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+    /* CSS:RWD-END */
   </style>
 </head>
 <body>
-  <header class="container" role="banner">
-    <nav aria-label="主選單">
-      <a href="#about">關於我</a>
-      <a href="#projects">作品集</a>
-      <a href="https://example.com/blog">技術部落格</a>
-      <a href="mailto:me@example.com">聯絡我</a>
-    </nav>
-    <h1>你好，我是小明：前端工程師新手之路</h1>
-    <h1>你好，我是小明：前端工程師新手之路</h1>
-    <p>歡迎來到我的個人網站！這裡整理了學習紀錄、Side Project 與實作心得。</p>
-  </header>
-
-  <footer class="container" role="contentinfo">
-    <p>© 2025 My Portfolio · <a href="#">GitHub</a></p>
-    <img src="https://source.unsplash.com/600x200/?technology,abstract" alt="">
-  </footer>
+  <div class="page">
+    <header class="site-header">
+      <nav class="nav">
+        <a href="#hero" class="nav-brand">Hung Ling</a>
+        <ul class="nav-menu">
+          <li><a href="#hero" class="nav-link">首頁</a></li>
+          <li><a href="#about" class="nav-link">關於我</a></li>
+          <li><a href="#skills" class="nav-link">技能</a></li>
+          <li><a href="#projects" class="nav-link">作品集</a></li>
+          <li><a href="#contact" class="nav-link">聯絡我</a></li>
+        </ul>
+      </nav>
+    </header>
+    
+    <main>
+      <!-- SECTION:HERO-START -->
+      <section id="hero" class="section section-hero">
+        <div class="container">
+          <div class="hero-content">
+            <h1 class="hero-title">打造優質的產品</h1>
+            <p class="hero-subtitle">Design AI Business</p>
+            <p class="hero-text">
+              這裡是 Hero 區的占位內容。之後會使用 Section SDD 的 Prompt 產生正式的文案與版面設計,包含:一句話自我介紹、核心職稱角色描述、以及行動呼籲(如瀏覽作品集或下載履歷)。<br><br>
+              <strong>開發者提示:</strong>之後會用 Section SDD 的 Prompt 產生新的 section 程式碼,請把新的 section 整段貼在 SECTION:HERO-START 和 SECTION:HERO-END 兩個註解中間,完全取代現在這一區的內容。
+            </p>
+            <a href="#projects" class="hero-cta">查看作品集</a>
+          </div>
+        </div>
+      </section>
+      <!-- SECTION:HERO-END -->
+      
+      <!-- SECTION:ABOUT-START -->
+      <section id="about" class="section section-about" aria-labelledby="about-heading">
+        <div class="container">
+          <h2 id="about-heading" class="section-title">關於我</h2>
+          <div class="about-wrapper">
+            <div class="about-text-content">
+              <p class="about-text">
+                我目前擔任產品經理，專注於透過設計思維與數據驅動的方法，打造符合使用者需求的產品體驗。我的核心技能包括市場分析、需求規劃、跨部門協作，以及從概念到上線的完整產品生命週期管理。
+              </p>
+              <p class="about-text">
+                擁有工業設計背景，讓我在產品開發過程中能夠更深入理解使用者情境與體驗細節。我相信好的產品源於清晰的目標與高效的執行力，同時我也非常重視團隊溝通與協作，確保每個階段都能對齊目標、快速迭代。
+              </p>
+              
+              <ul class="about-highlights">
+                <li class="about-highlights-item">具備完整的產品規劃與執行能力，從市場研究到功能設計都能獨立掌握</li>
+                <li class="about-highlights-item">擅長使用者研究與數據分析，能夠將洞察轉化為可行的產品策略</li>
+                <li class="about-highlights-item">重視設計與商業價值的平衡，確保產品既好用又能達成業務目標</li>
+              </ul>
+              
+              <div class="about-cta-group">
+                <a href="#projects" class="about-cta primary">查看作品集</a>
+                <a href="#contact" class="about-cta">聯絡我</a>
+              </div>
+            </div>
+            
+            <div class="about-image-wrapper">
+              <div class="about-image">
+                <img src="https://images.unsplash.com/photo-1507679799987-c73779587ccf?w=800&h=1000&fit=crop" alt="專注工作中的產品經理，展現專業與設計思維" loading="lazy">
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- SECTION:ABOUT-END -->
+      
+      <!-- SECTION:SKILLS-START -->
+      <section id="skills" class="section section-skills" aria-labelledby="skills-heading">
+        <div class="container">
+          <div class="skills-content">
+            <h2 id="skills-heading" class="section-title">技能專長</h2>
+            <div class="skills-grid">
+              <!-- Skill Item 1: AI應用 -->
+              <div class="skill-item">
+                <img src="https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExZmtoaWYwZXgyZjVsOTB1MW44aGh6ZHNrMWg5Y241a2Z0N2ViYm1ubiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/f0VbswUmSY6X1cBz4C/giphy.gif" alt="上架準備中" class="skill-item-icon">
+                <h3 class="skill-item-title">AI 應用</h3>
+                <p class="skills-text">熟悉運用 AI 工具 (如 ChatGPT, Midjourney) 於產品探索與內容生成，能將 AI 技術整合至工作流程，加速市場研究、使用者輪廓描繪與原型設計，有效提升產品開發效率與創新能力。</p>
+              </div>
+              <!-- Skill Item 2: 設計思維 -->
+              <div class="skill-item">
+                <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExazR0NmN3eWxqMWVta3oyeGRvYWxkOWE1NjE3ZXd2ZzJrODdxeXJ3ZiZlcD12MV9naWZzX3NlYXJjaCZjdD1n/IXnygGeB6LPPi/giphy.gif" alt="上架準備中" class="skill-item-icon">
+                <h3 class="skill-item-title">設計思維</h3>
+                <p class="skills-text">以使用者為中心，運用設計思維方法論，從同理心地圖、使用者旅程到服務藍圖，系統性地發掘潛在需求與痛點。擅長將抽象概念轉化為具體、可行的產品解決方案，打造卓越的使用者體驗。</p>
+              </div>
+              <!-- Skill Item 3: 商業管理 -->
+              <div class="skill-item">
+                <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExdHkzYXc4eW1wZ3FoY3NwM25rbGxieWJydm96aGUwdDE4Y3Q4YTdrdCZlcD12MV9naWZzX3NlYXJjaCZjdD1n/xT9IgusfDcqpPFzjdS/giphy.gif" alt="上架準備中" class="skill-item-icon">
+                <h3 class="skill-item-title">商業管理</h3>
+                <p class="skills-text">具備清晰的商業洞察力，能夠定義產品的關鍵指標 (KPIs/OKRs)，並進行市場與競品分析，確保產品策略與公司商業目標一致。擅長資源整合與跨部門溝通，推動產品從 0 到 1 成功落地。</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- SECTION:SKILLS-END -->
+      
+      <!-- SECTION:PROJECTS-START -->
+      <section id="projects" class="section section-projects" aria-labelledby="projects-heading">
+        <div class="container">
+          <div class="projects-content">
+            <h2 id="projects-heading" class="section-title">作品集</h2>
+            <div class="projects-grid">
+              <!-- Project Card 1 -->
+              <div class="project-card">
+                <img src="https://images.unsplash.com/photo-1650017069118-2ebf45880fbf?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D alt="上架準備中" class="project-card-image" loading="lazy">
+                <div class="project-card-content">
+                  <h3 class="project-card-title">專案一：電商平台 UI/UX 改造</h3>
+                  <p class="project-card-description">
+                    重新設計使用者購物流程，透過使用者研究與 A/B 測試，提升轉換率 15%。專注於行動裝置體驗優化，打造直覺且流暢的介面。
+                  </p>
+                </div>
+              </div>
+              <!-- Project Card 2 -->
+              <div class="project-card">
+                <img src="https://images.unsplash.com/photo-1600697395543-ef3ee6e9af7b?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="上架準備中" class="project-card-image" loading="lazy">
+                <div class="project-card-content">
+                  <h3 class="project-card-title">專案二：企業內部數據儀表板</h3>
+                  <p class="project-card-description">
+                    開發客製化數據可視化儀表板，整合多方數據源，幫助管理層快速掌握營運狀況。採用 React 與 D3.js 實現互動式圖表。
+                  </p>
+                </div>
+              </div>
+              <!-- Project Card 3 -->
+              <div class="project-card">
+                <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&q=80" alt="上架準備中" class="project-card-image" loading="lazy">
+                <div class="project-card-content">
+                  <h3 class="project-card-title">專案三：跨平台專案管理工具</h3>
+                  <p class="project-card-description">
+                    擔任產品經理角色，從市場分析、需求訪談到產品上線，完整規劃並推動專案。成功協調開發、設計與行銷團隊，如期交付產品。
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- SECTION:PROJECTS-END -->
+      
+      <!-- SECTION:CONTACT-START -->
+      <section id="contact" class="section section-contact" aria-labelledby="contact-heading">
+        <div class="container">
+          <div class="contact-content">
+            <h2 id="contact-heading" class="section-title">聯絡我</h2>
+            <p class="contact-text">
+              對我的服務感興趣嗎？或是有任何問題想詢問？<br>
+              歡迎填寫下方的表單，我會盡快與您聯繫！
+            </p>
+            
+            <form action="#" method="POST" class="contact-form">
+              <div class="form-group">
+                <label for="name" class="form-label">姓名</label>
+                <input type="text" id="name" name="name" class="form-input" placeholder="請輸入您的姓名" required>
+              </div>
+              <div class="form-group">
+                <label for="phone" class="form-label">電話</label>
+                <input type="tel" id="phone" name="phone" class="form-input" placeholder="請輸入您的聯絡電話">
+              </div>
+              <div class="form-group">
+                <label for="email" class="form-label">電子郵件</label>
+                <input type="email" id="email" name="email" class="form-input" placeholder="請輸入您的電子郵件" required>
+              </div>
+              <div class="form-group">
+                <label for="service" class="form-label">方案選擇</label>
+                <select id="service" name="service" class="form-input">
+                  <option value="">請選擇服務項目</option>
+                  <option value="web-dev">前端開發</option>
+                  <option value="ui-ux">UI/UX 設計</option>
+                  <option value="pm-consult">產品管理諮詢</option>
+                  <option value="other">其他問題</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="timeline" class="form-label">預期工期</label>
+                <input type="text" id="timeline" name="timeline" class="form-input" placeholder="例如：一個月、一季">
+              </div>
+              <div class="form-group">
+                <label for="message" class="form-label">簡述內容</label>
+                <textarea id="message" name="message" class="form-input" rows="5" placeholder="請簡述您的需求或問題"></textarea>
+              </div>
+              <button type="submit" class="contact-submit-btn">送出表單</button>
+            </form>
+          </div>
+        </div>
+      </section>
+      <!-- SECTION:CONTACT-END -->
+    </main>
+    
+    <footer>
+      <div class="container">
+        <p>&copy; 2024 陳品睿 · Frontend Developer. All rights reserved.</p>
+      </div>
+    </footer>
+  </div>
 </body>
 </html>
